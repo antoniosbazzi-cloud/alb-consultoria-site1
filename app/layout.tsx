@@ -1,8 +1,22 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
+import { Inter } from "next/font/google"
+import { Playfair_Display } from "next/font/google"
 import "./globals.css"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700", "800"],
+})
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "800", "900"],
+})
 
 export const metadata: Metadata = {
   title: "Hapvida NotreDame com 50% OFF - ALB Consultoria",
@@ -124,13 +138,13 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
       <head>
         <style>{`
           html {
-            font-family: ${GeistSans.style.fontFamily};
-            --font-sans: ${GeistSans.variable};
-            --font-mono: ${GeistMono.variable};
+            font-family: ${inter.style.fontFamily};
+            --font-sans: ${inter.style.fontFamily};
+            --font-serif: ${playfair.style.fontFamily};
           }
         `}</style>
 
@@ -181,7 +195,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className="font-sans antialiased">
         <noscript>
           <img
             height="1"

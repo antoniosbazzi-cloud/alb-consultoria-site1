@@ -113,6 +113,11 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Adicionando configuração de fontes premium */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 @layer base {
@@ -120,8 +125,116 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans antialiased;
   }
+
+  /* Sistema tipográfico premium com hierarquia clara */
+  .text-display {
+    @apply font-serif font-black text-5xl md:text-7xl lg:text-8xl leading-none tracking-tight;
+    background: linear-gradient(135deg, #1e40af 0%, #ea580c 50%, #1e40af 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: premium-gradient 4s ease infinite;
+    text-shadow: 0 4px 8px rgba(30, 64, 175, 0.2);
+  }
+
+  .text-headline {
+    @apply font-serif font-bold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight;
+    background: linear-gradient(135deg, #1e40af 0%, #ea580c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 2px 4px rgba(30, 64, 175, 0.15);
+  }
+
+  .text-title {
+    @apply font-serif font-semibold text-2xl md:text-3xl lg:text-4xl leading-snug tracking-tight;
+    color: #1f2937;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-subtitle {
+    @apply font-sans font-medium text-lg md:text-xl lg:text-2xl leading-relaxed;
+    color: #64748b;
+    letter-spacing: -0.025em;
+  }
+
+  .text-body-large {
+    @apply font-sans font-normal text-lg leading-relaxed;
+    color: #374151;
+    letter-spacing: -0.01em;
+  }
+
+  .text-body {
+    @apply font-sans font-normal text-base leading-relaxed;
+    color: #374151;
+  }
+
+  .text-caption {
+    @apply font-sans font-medium text-sm leading-normal;
+    color: #6b7280;
+    letter-spacing: 0.025em;
+  }
+
+  /* Efeitos tipográficos especiais */
+  .text-shimmer {
+    background: linear-gradient(90deg, #1e40af 0%, #ea580c 50%, #1e40af 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 2s ease-in-out infinite;
+  }
+
+  .text-glow {
+    color: #ea580c;
+    text-shadow: 0 0 10px rgba(234, 88, 12, 0.5), 0 0 20px rgba(234, 88, 12, 0.3);
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+
+  .text-premium {
+    @apply font-serif font-bold;
+    background: linear-gradient(135deg, #fbbf24 0%, #ea580c 50%, #dc2626 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 2px 4px rgba(234, 88, 12, 0.3));
+  }
+}
+
+/* Animações tipográficas avançadas */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes glow-pulse {
+  0% {
+    text-shadow: 0 0 5px rgba(234, 88, 12, 0.3), 0 0 10px rgba(234, 88, 12, 0.2);
+  }
+  100% {
+    text-shadow: 0 0 15px rgba(234, 88, 12, 0.6), 0 0 25px rgba(234, 88, 12, 0.4);
+  }
+}
+
+@keyframes text-float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.text-float {
+  animation: text-float 3s ease-in-out infinite;
 }
 
 /* Adicionando animações de conversão personalizadas */
@@ -228,5 +341,18 @@
 
   .shake {
     animation-duration: 0.3s;
+  }
+
+  /* Ajustes tipográficos para mobile */
+  .text-display {
+    @apply text-4xl md:text-6xl;
+  }
+
+  .text-headline {
+    @apply text-2xl md:text-4xl;
+  }
+
+  .text-title {
+    @apply text-xl md:text-2xl;
   }
 }
